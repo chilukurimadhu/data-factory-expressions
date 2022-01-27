@@ -1,0 +1,10 @@
+--get the table schema from source table using below query
+
+select string_agg(column_name,',') from (select concat(concat(concat(concat(column_name,' '),data_type),case when CHARACTER_MAXIMUM_LENGTH is  null THEN ' ' when CHARACTER_MAXIMUM_LENGTH=-1 then ' ' else  concat(concat('(',CHARACTER_MAXIMUM_LENGTH),')')  END),case when is_nullable='yes' then 'null' else 'not null' end) as column_name from information_schema.columns where table_name='tblMSC_ProductionOrders')a
+
+
+--below is the data factory quivalant expresion to above query
+
+@concat('select string_agg(column_name,','''',',','''',') as col_name from (select concat(concat(column_name,','''',' ','''','),data_type) as column_name from information_schema.columns where table_name=','''','employee','''',')a')
+
+ Final:

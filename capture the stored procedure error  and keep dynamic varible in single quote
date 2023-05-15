@@ -1,0 +1,12 @@
+capture stored procedure error
+eaxmaple_actvity.error.Message
+
+for copy actvity:
+1. eaxmaple_actvity.error.Message
+2.eaxmaple_actvity.output.error.Message
+
+sql statements and keepp variable in single quotes
+
+@concat('update schema.table_name set PROCESS_FLAG=''Y''',' where JOB_NAME=''',item().JOB_NAME,'''')
+or
+@concat('update PUBLIC.FIVETRAN_SYNC_CONFIG set PROCESS_FLAG=',concat('''','Y',''''),' where JOB_NAME=''',item().JOB_NAME,'''')
